@@ -11,11 +11,10 @@
 
     <TextView android:text="Net Center" android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-    <ListView
+    <com.example.administrator.netcenter.utility.ReFreshListView
         android:id="@+id/ServerList_lv"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone">
+        android:layout_height="wrap_content">
 
-    </ListView>
+    </com.example.administrator.netcenter.utility.ReFreshListView>
 </RelativeLayout>

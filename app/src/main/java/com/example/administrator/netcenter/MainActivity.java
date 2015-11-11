@@ -13,16 +13,21 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+import com.example.administrator.netcenter.data.ServerAdapter;
+import com.example.administrator.netcenter.data.ServerData;
+import com.example.administrator.netcenter.utility.ReFreshListView;
 
+import java.util.ArrayList;
+
+public class MainActivity extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener, ReFreshListView.IReflashListener {
+    ArrayList<ServerData> server_list;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,6 +45,37 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        setData();
+        showList(server_list);
+    }
+    ServerAdapter adapter;
+    ReFreshListView listview;
+    private void showList(ArrayList<ServerData> server_list) {
+
+        if (adapter == null) {
+            listview = (ReFreshListView) findViewById(R.id.ServerList_lv);
+            listview.setInterface(this);
+            adapter = new ServerAdapter(this, server_list);
+            listview.setAdapter(adapter);
+        } else {
+            adapter.onDateChange(server_list);
+        }
+    }
+
+    private void setData() {
+        server_list = new ArrayList<ServerData>();
+        for (int i = 0; i < 10; i++) {
+            ServerData entity = new ServerData();
+            entity.setDesc("大金融实验室");
+            int[] ip = {10,1,16,23};
+            entity.setIp(ip);
+            entity.setOptype(1);
+            entity.setPosition("B-2-1");
+            entity.setUnit("金融分院");
+            server_list.add(entity);
+        }
+
     }
 
     @Override
@@ -99,5 +135,10 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onReflash() {
+
     }
 }
