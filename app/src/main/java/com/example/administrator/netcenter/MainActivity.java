@@ -1,6 +1,7 @@
 package com.example.administrator.netcenter;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.view.View;
@@ -139,6 +140,34 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onReflash() {
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                // TODO Auto-generated method stub
+                //获取最新数据
+                setReflashData();
+                //通知界面显示
+                showList(server_list);
+                //通知listview 刷新数据完毕；
+                listview.reflashComplete();
+            }
+        }, 2000);
 
     }
+
+    private void setReflashData() {
+        for (int i = 0; i < 2; i++) {
+            ServerData entity = new ServerData();
+            entity.setDesc("大金融实验室");
+            int[] ip = {10,1,16,23};
+            entity.setIp(ip);
+            entity.setOptype(1);
+            entity.setPosition("B-2-1");
+            entity.setUnit("金融分院");
+            server_list.add(entity);
+        }
+    }
+
 }
