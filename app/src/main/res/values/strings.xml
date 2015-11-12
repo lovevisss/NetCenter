@@ -8,4 +8,5 @@
     <string name="pullrefresh">下拉可以刷新！</string>
     <string name="releaseTorefresh">松开可以刷新！</string>
     <string name="refreshing">正在刷新...</string>
+    <string name="title_activity_server_list">ServerList</string>
 </resources>

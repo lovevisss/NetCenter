@@ -1,5 +1,6 @@
 package com.example.administrator.netcenter;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
@@ -14,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.administrator.netcenter.activity.ServerList_;
 import com.example.administrator.netcenter.data.ServerAdapter;
 import com.example.administrator.netcenter.data.ServerData;
 import com.example.administrator.netcenter.utility.ReFreshListView;
@@ -118,7 +120,9 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camara) {
-
+            Intent i = new Intent(this, ServerList_.class);
+            startActivity(i);
+            overridePendingTransition(R.anim.in_from_right, 0);
 
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
