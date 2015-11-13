@@ -9,10 +9,12 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_server_list"
     tools:context="com.example.administrator.netcenter.activity.ServerList">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ServerList"/>
 
+    <com.example.administrator.netcenter.utility.ReFreshListView
+        android:id="@+id/ServerList_lv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </com.example.administrator.netcenter.utility.ReFreshListView>
 
 </RelativeLayout>

@@ -157,6 +157,9 @@ public class ReFreshListView extends ListView implements OnScrollListener {
 		int tempY = (int) ev.getY();
 		int space = tempY - startY;
 		int topPadding = space - headerHeight;
+		Log.e("space", String.valueOf(space));
+		Log.e("toppadding", String.valueOf(topPadding));
+		Log.e("scrollState", String.valueOf(scrollState));
 		switch (state) {
 		case NONE:
 			if (space > 0) {
@@ -167,7 +170,7 @@ public class ReFreshListView extends ListView implements OnScrollListener {
 		case PULL:
 			topPadding(topPadding);
 			if (space > headerHeight + 30
-					&& scrollState == SCROLL_STATE_TOUCH_SCROLL) {
+					/*&& scrollState == SCROLL_STATE_TOUCH_SCROLL*/) {
 				state = RELESE;
 				reflashViewByState();
 			}
@@ -242,7 +245,7 @@ public class ReFreshListView extends ListView implements OnScrollListener {
 		reflashViewByState();
 		TextView lastupdatetime = (TextView) header
 				.findViewById(R.id.lastupdate_time);
-		SimpleDateFormat format = new SimpleDateFormat("yyyyƒÍMM‘¬dd»’ hh:mm:ss");
+		SimpleDateFormat format = new SimpleDateFormat(getContext().getString(R.string.dateformat));
 		Date date = new Date(System.currentTimeMillis());
 		String time = format.format(date);
 		lastupdatetime.setText(time);

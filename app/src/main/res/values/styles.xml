@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -11,13 +11,24 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" >
+    </style>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
+        </style>
     <style name="customProgressBar" parent="@android:style/Widget.ProgressBar.Small">
         <item name="android:indeterminateDrawable">@drawable/custom_progress_bar</item>
         <item name="android:layout_width">21dip</item>
         <item name="android:layout_height">21dip</item>
         <item name="android:layout_gravity">center</item>
+    </style>
+    <style name="Anim_fade" parent="AppTheme.NoActionBar">
+        <item name="android:windowAnimationStyle">@style/fade</item>
+    </style>
+    <style type="text/css" name="fade" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/in_from_right</item>
+    <item name="android:activityOpenExitAnimation">@anim/out_of_left</item>
+    <item name="android:activityCloseEnterAnimation">@anim/in_from_right</item>
+    <item name="android:activityCloseExitAnimation">@anim/out_of_left</item>
     </style>
 
 </resources>
