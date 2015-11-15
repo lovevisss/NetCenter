@@ -1,5 +1,6 @@
 package com.example.administrator.netcenter.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
@@ -26,7 +27,7 @@ import org.androidannotations.annotations.EActivity;
 import java.util.ArrayList;
 
 @EActivity(R.layout.activity_server_list)
-public class ServerList extends AppCompatActivity implements ReFreshListView.IReflashListener, AbsListView.OnScrollListener, AdapterView.OnItemClickListener {
+public class ServerList extends AppCompatActivity implements ReFreshListView.IReflashListener, AdapterView.OnItemClickListener {
     ArrayList<ServerData> server_list;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,8 +54,10 @@ public class ServerList extends AppCompatActivity implements ReFreshListView.IRe
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+
+                Intent i = new Intent(getApplication(), AddDevice_.class);
+                startActivity(i);
+                overridePendingTransition(R.anim.in_from_right, 0);
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -72,7 +75,6 @@ public class ServerList extends AppCompatActivity implements ReFreshListView.IRe
             adapter = new ServerAdapter(this, server_list);
             listview.setAdapter(adapter);
             listview.setOnItemClickListener(this);
-            listview.setOnScrollListener(this);
         } else {
             adapter.onDateChange(server_list);
         }
@@ -127,15 +129,7 @@ public class ServerList extends AppCompatActivity implements ReFreshListView.IRe
     }
 
 
-    @Override
-    public void onScrollStateChanged(AbsListView view, int scrollState) {
 
-    }
-
-    @Override
-    public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-
-    }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

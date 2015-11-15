@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.administrator.netcenter" >
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -26,6 +29,42 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.administrator.netcenter.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activity.GridActivity_"
+            android:label="@string/title_activity_grid"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.administrator.netcenter.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activity.AddDevice_"
+            android:label="@string/title_activity_add_server"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.administrator.netcenter.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activity.AddActivity.DeviceType"
+            android:label="@string/title_activity_device_type"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.administrator.netcenter.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activity.AddActivity.Descripiton"
+            android:label="@string/title_activity_descripiton"
+            android:parentActivityName=".activity.AddDevice_"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.administrator.netcenter.activity.AddDevice_" />
         </activity>
     </application>
 

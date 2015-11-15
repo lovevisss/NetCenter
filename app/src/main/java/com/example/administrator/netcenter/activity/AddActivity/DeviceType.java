@@ -1,0 +1,72 @@
+package com.example.administrator.netcenter.activity.AddActivity;
+
+import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+
+import com.example.administrator.netcenter.R;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class DeviceType extends AppCompatActivity implements AdapterView.OnItemClickListener {
+    private int[] icon = {R.drawable.address_book,R.drawable.calendar,R.drawable.camera,R.drawable.games_control};
+    private String[] iconName = {"PC","交换机","服务器","无线AP"};
+    private List<Map<String,Object>> datalist;
+    private SimpleAdapter adapter;
+    private ListView listview;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_device_type);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                overridePendingTransition(R.anim.in_from_right, R.anim.out_of_left);
+            }
+        });
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        listview = (ListView) findViewById(R.id.devtype_lv);
+        datalist = new ArrayList<Map<String,Object>>();
+        adapter = new SimpleAdapter(this,datalist,R.layout.additem_layout,new String[]{"image","text"},new int[]{R.id.addIV,R.id.addTV});
+        listview.setAdapter(adapter);
+        listview.setOnItemClickListener(this);
+        getData();
+    }
+
+    private List<Map<String,Object>> getData() {
+        for(int i = 0 ; i < icon.length; i++)
+        {
+            Map<String,Object> map = new HashMap<>();
+            map.put("image", icon[i]);
+            map.put("text", iconName[i]);
+            datalist.add(map);
+        }
+        return datalist;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Log.e("click","ed");
+    }
+}

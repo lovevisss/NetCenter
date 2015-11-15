@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,6 +15,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.avos.avoscloud.AVAnalytics;
+import com.avos.avoscloud.AVOSCloud;
+import com.avos.avoscloud.AVObject;
+import com.example.administrator.netcenter.activity.GridActivity_;
 import com.example.administrator.netcenter.activity.ServerList_;
 
 
@@ -24,6 +29,8 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        AVOSCloud.initialize(this, "hB7FtkSMGhmKERlUA20C9VHW", "CpLSC6509RSaA0Nq5Fc1lpPc");
+        AVAnalytics.trackAppOpened(getIntent());
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -92,12 +99,20 @@ public class MainActivity extends AppCompatActivity
 
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
+            Intent i = new Intent(this, GridActivity_.class);
+            startActivity(i);
+            overridePendingTransition(R.anim.in_from_right, 0);
 
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_share) {  //添加设备
+            Intent i = new Intent(this, GridActivity_.class);
+            startActivity(i);
+            overridePendingTransition(R.anim.in_from_right, 0);
+
+
 
         } else if (id == R.id.nav_send) {
 
@@ -108,7 +123,12 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-
+    private void testAvO() {
+        Log.e("foo","bar");
+        AVObject testObj = new AVObject("testObj");
+        testObj.put("foo","bar");
+        testObj.saveInBackground();
+    }
 
 
 }

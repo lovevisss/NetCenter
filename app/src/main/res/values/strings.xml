@@ -11,4 +11,8 @@
     <string name="title_activity_server_list">Server List</string>
     <string name="serverList">服务器列表</string>
     <string name="dateformat">yyyy年MM月dd日 hh:mm:ss</string>
+    <string name="title_activity_grid">GridActivity</string>
+    <string name="title_activity_add_server">AddServer</string>
+    <string name="title_activity_device_type">DeviceType</string>
+    <string name="title_activity_descripiton">Descripiton</string>
 </resources>

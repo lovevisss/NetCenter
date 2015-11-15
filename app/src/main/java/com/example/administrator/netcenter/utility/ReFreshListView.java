@@ -157,9 +157,9 @@ public class ReFreshListView extends ListView implements OnScrollListener {
 		int tempY = (int) ev.getY();
 		int space = tempY - startY;
 		int topPadding = space - headerHeight;
-		Log.e("space", String.valueOf(space));
-		Log.e("toppadding", String.valueOf(topPadding));
-		Log.e("scrollState", String.valueOf(scrollState));
+//		Log.e("space", String.valueOf(space));
+//		Log.e("toppadding", String.valueOf(topPadding));
+//		Log.e("scrollState", String.valueOf(scrollState));
 		switch (state) {
 		case NONE:
 			if (space > 0) {
@@ -170,7 +170,7 @@ public class ReFreshListView extends ListView implements OnScrollListener {
 		case PULL:
 			topPadding(topPadding);
 			if (space > headerHeight + 30
-					/*&& scrollState == SCROLL_STATE_TOUCH_SCROLL*/) {
+					&& scrollState == SCROLL_STATE_TOUCH_SCROLL) {
 				state = RELESE;
 				reflashViewByState();
 			}
