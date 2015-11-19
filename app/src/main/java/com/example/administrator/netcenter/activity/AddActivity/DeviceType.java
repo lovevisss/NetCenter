@@ -1,5 +1,6 @@
 package com.example.administrator.netcenter.activity.AddActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -68,5 +69,17 @@ public class DeviceType extends AppCompatActivity implements AdapterView.OnItemC
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Log.e("click","ed");
+        Intent i;
+        switch (position)
+        {
+            case 1: //交换机
+                i = new Intent(getApplication(),Switch.class);
+                break;
+            case 2://server
+                i = new Intent(getApplication(),Server_brand.class);
+                break;
+        }
     }
+
+
 }

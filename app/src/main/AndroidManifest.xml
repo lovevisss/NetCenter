@@ -66,6 +66,78 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.administrator.netcenter.activity.AddDevice_" />
         </activity>
+        <activity
+            android:name=".activity.AddActivity.Position_"
+            android:label="@string/title_activity_position"
+            android:parentActivityName=".activity.AddDevice_"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.administrator.netcenter.activity.AddDevice_" />
+        </activity>
+        <activity
+            android:name=".activity.AddActivity.IP_address"
+            android:label="@string/title_activity_ip_address"
+            android:parentActivityName=".activity.AddDevice_"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.administrator.netcenter.activity.AddDevice_" />
+        </activity>
+        <activity
+            android:name=".activity.AddActivity.AccountPwd"
+            android:label="@string/title_activity_account_pwd"
+            android:parentActivityName=".activity.AddDevice_"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.administrator.netcenter.activity.AddDevice_" />
+        </activity>
+        <activity
+            android:name=".activity.AddActivity.Operating_System_"
+            android:label="@string/title_activity_operating__system"
+            android:parentActivityName=".activity.AddDevice_"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.administrator.netcenter.activity.AddDevice_" />
+        </activity>
+        <activity
+            android:name=".activity.AddActivity.Unit"
+            android:label="@string/title_activity_unit"
+            android:parentActivityName=".activity.AddDevice_"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.administrator.netcenter.activity.AddDevice_" />
+        </activity>
+        <activity
+            android:name=".activity.AddActivity.Switch"
+            android:label="@string/title_activity_switch"
+            android:parentActivityName=".activity.AddActivity.DeviceType"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.administrator.netcenter.activity.AddActivity.DeviceType" />
+        </activity>
+        <activity
+            android:name=".activity.AddActivity.Server_brand"
+            android:label="@string/title_activity_server_1"
+            android:parentActivityName=".activity.AddActivity.DeviceType"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.administrator.netcenter.activity.AddActivity.DeviceType" />
+        </activity>
+        <activity
+            android:name=".activity.AddActivity.Server_type"
+            android:label="@string/title_activity_server_type"
+            android:parentActivityName=".activity.AddActivity.DeviceType"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.administrator.netcenter.activity.AddActivity.DeviceType" />
+        </activity>
     </application>
 
 </manifest>

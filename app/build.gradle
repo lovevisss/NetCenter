@@ -39,7 +39,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     apt "org.androidannotations:androidannotations:$AAVersion"
     compile "org.androidannotations:androidannotations-api:$AAVersion"
     compile 'cn.leancloud.android:avoscloud-sdk:v3.+'
@@ -48,10 +48,11 @@ dependencies {
     compile 'cn.leancloud.android:avoscloud-sns:v3.+@aar'
     compile 'cn.leancloud.android:qq-sdk:1.6.1-leancloud'
     compile 'cn.leancloud.android:avoscloud-statistics:v3.+'
-
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.1.0'
     compile 'com.android.support:design:23.1.0'
+    compile 'org.kie.modules:org-apache-commons-net:6.3.0.Final'
+    compile 'org.jbpm.dashboard:jbpm-dashboard-modules:6.3.0.Final'
 }
 
 apt {

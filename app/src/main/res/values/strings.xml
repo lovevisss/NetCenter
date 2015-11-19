@@ -15,4 +15,17 @@
     <string name="title_activity_add_server">AddServer</string>
     <string name="title_activity_device_type">DeviceType</string>
     <string name="title_activity_descripiton">Descripiton</string>
+    <string name="title_activity_position">Position</string>
+    <string name="title_activity_ip_address">IP_address</string>
+    <string name="ex_ip">例子:192.168.0.1</string>
+    <string name="ex_po">如果是机柜请用A-6-1这种格式</string>
+    <string name="title_activity_account_pwd">AccountPwd</string>
+    <string name="account">账号</string>
+    <string name="pwd">密码</string>
+    <string name="title_activity_operating__system">Operating_System</string>
+    <string name="title_activity_unit">Unit</string>
+    <string name="unit">使用部门</string>
+    <string name="title_activity_switch">Switch</string>
+    <string name="title_activity_server_1">Server_1</string>
+    <string name="title_activity_server_type">Server_type</string>
 </resources>

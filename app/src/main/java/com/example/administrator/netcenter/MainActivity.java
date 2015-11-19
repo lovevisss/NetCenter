@@ -20,6 +20,7 @@ import com.avos.avoscloud.AVOSCloud;
 import com.avos.avoscloud.AVObject;
 import com.example.administrator.netcenter.activity.GridActivity_;
 import com.example.administrator.netcenter.activity.ServerList_;
+import com.example.administrator.netcenter.utility.pinghost;
 
 
 public class MainActivity extends AppCompatActivity
@@ -50,7 +51,6 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
 
     }
 
@@ -105,6 +105,7 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_slideshow) {
 
+            String re = pinghost.pingHost("10.4.80.2");
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {  //添加设备
