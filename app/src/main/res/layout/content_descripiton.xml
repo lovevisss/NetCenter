@@ -10,6 +10,7 @@
     tools:showIn="@layout/activity_descripiton"
     tools:context="com.example.administrator.netcenter.activity.AddActivity.Descripiton">
     <EditText
+        android:id="@+id/desc_ev"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 </RelativeLayout>

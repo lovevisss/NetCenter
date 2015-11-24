@@ -10,6 +10,7 @@
     tools:showIn="@layout/activity_ip_address"
     tools:context="com.example.administrator.netcenter.activity.AddActivity.IP_address">
     <EditText
+        android:id="@+id/ip_ev"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/ex_ip"/>

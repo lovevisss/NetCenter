@@ -51,8 +51,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.1.0'
     compile 'com.android.support:design:23.1.0'
-    compile 'org.kie.modules:org-apache-commons-net:6.3.0.Final'
-    compile 'org.jbpm.dashboard:jbpm-dashboard-modules:6.3.0.Final'
 }
 
 apt {
