@@ -138,6 +138,22 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.administrator.netcenter.activity.AddActivity.DeviceType" />
         </activity>
+        <activity
+            android:name=".activity.AddActivity.PC"
+            android:label="@string/title_activity_pc"
+            android:parentActivityName=".activity.AddActivity.DeviceType" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.administrator.netcenter.activity.AddActivity.DeviceType" />
+        </activity>
+        <activity
+            android:name=".activity.AddActivity.AP"
+            android:label="@string/title_activity_ap"
+            android:parentActivityName=".activity.AddActivity.DeviceType" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.administrator.netcenter.activity.AddActivity.DeviceType" />
+        </activity>
     </application>
 
 </manifest>

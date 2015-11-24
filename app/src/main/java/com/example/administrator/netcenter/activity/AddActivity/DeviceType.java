@@ -72,13 +72,25 @@ public class DeviceType extends AppCompatActivity implements AdapterView.OnItemC
         Intent i;
         switch (position)
         {
+            case 0://PC
+                i = new Intent(getApplication(),PC.class);
+                break;
             case 1: //交换机
                 i = new Intent(getApplication(),Switch.class);
                 break;
             case 2://server
                 i = new Intent(getApplication(),Server_brand.class);
                 break;
+            case 3://无线ap
+                i = new Intent(getApplication(), AP.class);
+                break;
+            default:
+                i = new Intent(getApplication(),Switch.class);
+                break;
         }
+
+        startActivityForResult(i,1);
+        overridePendingTransition(R.anim.in_from_right, R.anim.out_of_left);
     }
 
 

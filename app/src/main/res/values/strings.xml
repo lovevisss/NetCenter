@@ -29,4 +29,8 @@
     <string name="title_activity_server_1">Server_1</string>
     <string name="title_activity_server_type">Server_type</string>
     <string name="server_list">服务器列表</string>
+    <string name="title_activity_pc">PC</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_ap">AP</string>
 </resources>
