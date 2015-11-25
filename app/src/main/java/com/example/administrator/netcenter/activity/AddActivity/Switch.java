@@ -65,22 +65,30 @@ public class Switch extends AppCompatActivity implements AdapterView.OnItemClick
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
         Log.e("click", "ed");
+        Intent i = new Intent();
+        String detail;
         switch (position)
         {
             case 0://PC
                 Log.e("e","24");
+                detail = type[0];
                 break;
             case 1: //交换机
                 Log.e("e","48");
+                detail = type[1];
                 break;
             case 2://server
                 Log.e("e","48poe");
-                break;
-            case 3://无线ap
+                detail = type[2];
                 break;
             default:
+                detail = type[2];
                 break;
         }
+        i.putExtra("typedetail",detail);
+        Switch.this.setResult(1, i);
+        Switch.this.finish();
+
 
     }
 }

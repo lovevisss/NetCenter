@@ -25,6 +25,7 @@ public class DeviceType extends AppCompatActivity implements AdapterView.OnItemC
     private List<Map<String,Object>> datalist;
     private SimpleAdapter adapter;
     private ListView listview;
+    private String type,typedetail;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,24 +75,42 @@ public class DeviceType extends AppCompatActivity implements AdapterView.OnItemC
         {
             case 0://PC
                 i = new Intent(getApplication(),PC.class);
+                type = "PC";
                 break;
             case 1: //交换机
                 i = new Intent(getApplication(),Switch.class);
+                type = "交换机";
                 break;
             case 2://server
                 i = new Intent(getApplication(),Server_brand.class);
+                type = "服务器";
                 break;
             case 3://无线ap
                 i = new Intent(getApplication(), AP.class);
+                type = "无线ap";
                 break;
             default:
                 i = new Intent(getApplication(),Switch.class);
                 break;
         }
-
         startActivityForResult(i,1);
         overridePendingTransition(R.anim.in_from_right, R.anim.out_of_left);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
+        switch (resultCode)
+        {
+            case 1:
+                typedetail = data.getExtras().getString("typedetail");
+                break;
+        }
+
+        Intent i = new Intent();
+        i.putExtra("typedetail",typedetail);
+        i.putExtra("type",type);
+        DeviceType.this.setResult(0, i);
+        DeviceType.this.finish();
+    }
 }

@@ -35,7 +35,7 @@ import org.w3c.dom.Text;
 @EActivity(R.layout.activity_add_device)
 public class AddDevice extends AppCompatActivity {
 
-    private String desc,ip,account,pwd,position,os,unit;
+    private String desc,ip,account,pwd,position,os,unit,type,typedetail;
     @ViewById(R.id.desc_tv)
     TextView desc_tv;
     @ViewById
@@ -48,7 +48,8 @@ public class AddDevice extends AppCompatActivity {
     TextView os_tv;
     @ViewById
     TextView unit_tv;
-
+    @ViewById
+    TextView type_tv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,6 +80,8 @@ public class AddDevice extends AppCompatActivity {
                 {
                     Log.e("foo","bar");
                     AVObject serObj = new AVObject("Server");
+                    serObj.put("typedetail",typedetail);
+                    serObj.put("type",type);
                     serObj.put("desc",desc);
                     serObj.put("account",account);
                     serObj.put("pwd",pwd);
@@ -158,6 +161,11 @@ public class AddDevice extends AppCompatActivity {
 //        super.onActivityResult(requestCode, resultCode, data);
         switch (resultCode)
         {
+            case 0://type
+                type = data.getExtras().getString("type");
+                typedetail = data.getExtras().getString("typedetail");
+                type_tv.setText(typedetail);
+                break;
             case 1://描述
                 desc = data.getExtras().getString("desc");
 //                Log.e("desc+return",desc);

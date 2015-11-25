@@ -1,11 +1,13 @@
 package com.example.administrator.netcenter.activity.AddActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
@@ -18,7 +20,7 @@ import org.androidannotations.annotations.ViewById;
 import java.util.ArrayList;
 import java.util.List;
 @EActivity(R.layout.activity_operating__system)
-public class Operating_System extends AppCompatActivity {
+public class Operating_System extends AppCompatActivity implements AdapterView.OnItemClickListener {
     private List<String> list;
     private ArrayAdapter<String> adapter;
     @Override
@@ -57,5 +59,16 @@ public class Operating_System extends AppCompatActivity {
         adapter=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,list);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+        spinner.setOnItemClickListener(this);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        String os = list.get(position);
+        Intent i = new Intent();
+        i.putExtra("os", os);
+        Operating_System.this.setResult(5, i);
+        Operating_System.this.finish();
+
     }
 }
