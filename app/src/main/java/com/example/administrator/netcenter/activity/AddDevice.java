@@ -13,6 +13,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.avos.avoscloud.AVObject;
 import com.example.administrator.netcenter.R;
 import com.example.administrator.netcenter.activity.AddActivity.AccountPwd;
 import com.example.administrator.netcenter.activity.AddActivity.Descripiton;
@@ -28,14 +29,25 @@ import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
+import org.androidannotations.annotations.ViewsById;
+import org.w3c.dom.Text;
 
 @EActivity(R.layout.activity_add_device)
 public class AddDevice extends AppCompatActivity {
 
+    private String desc,ip,account,pwd,position,os,unit;
     @ViewById(R.id.desc_tv)
     TextView desc_tv;
     @ViewById
     TextView ip_tv;
+    @ViewById
+    TextView ac_tv;
+    @ViewById
+    TextView po_tv;
+    @ViewById
+    TextView os_tv;
+    @ViewById
+    TextView unit_tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,12 +73,38 @@ public class AddDevice extends AppCompatActivity {
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onClick(View view) {   //提交数据到云
+             boolean isNotEmpty = checkdata();
+                if (isNotEmpty)
+                {
+                    Log.e("foo","bar");
+                    AVObject serObj = new AVObject("Server");
+                    serObj.put("desc",desc);
+                    serObj.put("account",account);
+                    serObj.put("pwd",pwd);
+                    serObj.put("unit",unit);
+                    serObj.put("position",position);
+                    serObj.put("ip",ip);
+                    serObj.put("os",os);
+                    serObj.saveInBackground();
+
+
+                }
+
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    private boolean checkdata() {//必须项为设备类型
+        if(position!=null && unit != null && desc !=null)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     @Click({R.id.Ltype,R.id.Ldesc,R.id.LAccount,R.id.LIP,R.id.LOp,R.id.LPosition,R.id.LUnit})
@@ -117,7 +155,6 @@ public class AddDevice extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
 //        String result = data.getExtras().getString("result");
-        String desc,ip;
 //        super.onActivityResult(requestCode, resultCode, data);
         switch (resultCode)
         {
@@ -129,7 +166,32 @@ public class AddDevice extends AppCompatActivity {
             case 2://ip地址
                 ip = data.getExtras().getString("IP");
                 ip_tv.setText(ip);
+                break;
+            case 3://账号密码
+                account = data.getExtras().getString("account");
+                pwd = data.getExtras().getString("pwd");
+                ac_tv.setText(account + "/" + pwd);
+                break;
+            case 4://位置
+                position = data.getExtras().getString("position");
+                po_tv.setText(position);
+                break;
+            case 5://系统
+                os = data.getExtras().getString("os");
+                os_tv.setText(os);
+                break;
+            case 6:
+                unit = data.getExtras().getString("unit");
+                unit_tv.setText(unit);
+                break;
+
+
+
+
+
+
 
         }
     }
 }
+

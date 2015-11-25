@@ -1,10 +1,12 @@
 package com.example.administrator.netcenter.activity.AddActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -61,7 +63,24 @@ public class Switch extends AppCompatActivity implements AdapterView.OnItemClick
     }
 
     @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+        Log.e("click", "ed");
+        switch (position)
+        {
+            case 0://PC
+                Log.e("e","24");
+                break;
+            case 1: //交换机
+                Log.e("e","48");
+                break;
+            case 2://server
+                Log.e("e","48poe");
+                break;
+            case 3://无线ap
+                break;
+            default:
+                break;
+        }
 
     }
 }
