@@ -104,13 +104,13 @@ public class DeviceType extends AppCompatActivity implements AdapterView.OnItemC
         {
             case 1:
                 typedetail = data.getExtras().getString("typedetail");
+                Intent i = new Intent();
+                i.putExtra("typedetail",typedetail);
+                i.putExtra("type",type);
+                DeviceType.this.setResult(0, i);
+                DeviceType.this.finish();
                 break;
         }
 
-        Intent i = new Intent();
-        i.putExtra("typedetail",typedetail);
-        i.putExtra("type",type);
-        DeviceType.this.setResult(0, i);
-        DeviceType.this.finish();
     }
 }

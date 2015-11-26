@@ -162,9 +162,13 @@ public class AddDevice extends AppCompatActivity {
         switch (resultCode)
         {
             case 0://type
-                type = data.getExtras().getString("type");
-                typedetail = data.getExtras().getString("typedetail");
-                type_tv.setText(typedetail);
+                if(data!=null)
+                {
+                    type = data.getExtras().getString("type");
+                    typedetail = data.getExtras().getString("typedetail");
+                    type_tv.setText(typedetail);
+
+                }
                 break;
             case 1://描述
                 desc = data.getExtras().getString("desc");

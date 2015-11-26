@@ -20,7 +20,7 @@ import org.androidannotations.annotations.ViewById;
 import java.util.ArrayList;
 import java.util.List;
 @EActivity(R.layout.activity_operating__system)
-public class Operating_System extends AppCompatActivity implements AdapterView.OnItemClickListener {
+public class Operating_System extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private List<String> list;
     private ArrayAdapter<String> adapter;
     @Override
@@ -32,6 +32,7 @@ public class Operating_System extends AppCompatActivity implements AdapterView.O
     @ViewById(R.id.optype_spinner)
     Spinner spinner;
 
+    private String os;
     @AfterViews
     void init()
     {
@@ -42,8 +43,11 @@ public class Operating_System extends AppCompatActivity implements AdapterView.O
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+
+                Intent i = new Intent();
+                i.putExtra("os", os);
+                Operating_System.this.setResult(5, i);
+                Operating_System.this.finish();
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -59,16 +63,19 @@ public class Operating_System extends AppCompatActivity implements AdapterView.O
         adapter=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,list);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-        spinner.setOnItemClickListener(this);
+        spinner.setOnItemSelectedListener(this);
+
+    }
+
+
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        os = list.get(position);
     }
 
     @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        String os = list.get(position);
-        Intent i = new Intent();
-        i.putExtra("os", os);
-        Operating_System.this.setResult(5, i);
-        Operating_System.this.finish();
+    public void onNothingSelected(AdapterView<?> parent) {
 
     }
 }

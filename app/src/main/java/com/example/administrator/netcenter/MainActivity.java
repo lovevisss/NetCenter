@@ -16,16 +16,24 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.avos.avoscloud.AVAnalytics;
+import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVOSCloud;
 import com.avos.avoscloud.AVObject;
+import com.avos.avoscloud.AVQuery;
+import com.avos.avoscloud.FindCallback;
+import com.avos.avoscloud.GetCallback;
 import com.example.administrator.netcenter.activity.GridActivity_;
 import com.example.administrator.netcenter.activity.ServerList_;
 import com.example.administrator.netcenter.utility.pinghost;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private String[] brandName = {"Dell","Hp","IBM","Cisco"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -116,8 +124,11 @@ public class MainActivity extends AppCompatActivity
 
 
         } else if (id == R.id.nav_send) {
-
+//            testAvO();
+//            readAvo();
+//            changeAv0();
         }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -125,11 +136,52 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void testAvO() {
-        Log.e("foo","bar");
-        AVObject testObj = new AVObject("testObj");
-        testObj.put("foo","bar");
+        Log.e("foo", "bar");
+        AVObject testObj = new AVObject("Device");
+        testObj.put("brand",brandName);
         testObj.saveInBackground();
     }
 
+    private void readAvo(){
+        Log.e("foo", "bar");
+        AVQuery<AVObject> query = new AVQuery<AVObject>("Server_brand");
+        query.whereExists("brand");
+        query.findInBackground(new FindCallback<AVObject>() {
+            @Override
+            public void done(List<AVObject> list, AVException e) {
+                if(e == null)
+                {
+                    ArrayList<String> s = (ArrayList<String>) list.get(0).get("brand");
+                    Log.d("success",s.get(0));
+                }
+                else
+                {
+                    Log.d("fail","exists");
+                }
+            }
+        });
+    }
+
+
+    private void changeAv0()
+    {
+        Log.e("foo", "bar");
+        AVQuery<AVObject> query = new AVQuery<AVObject>("Server_brand");
+        AVObject brand;
+        query.getInBackground("5656ab1e00b0ec3faa41044c", new GetCallback<AVObject>() {
+            public void done(AVObject brand, AVException e) {
+                if (e == null) {
+                    ArrayList<String> s = (ArrayList<String>) brand.get("brand");
+                    s.add("Sangfor");
+                    brand.put("brand", s);
+                    brand.saveInBackground();
+                } else {
+                    Log.e("获取微博", "错误: " + e.getMessage());
+                }
+            }
+        });
+
+
+    }
 
 }
