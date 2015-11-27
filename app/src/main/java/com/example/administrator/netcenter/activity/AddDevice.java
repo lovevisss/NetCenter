@@ -11,9 +11,12 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVObject;
+import com.avos.avoscloud.SaveCallback;
 import com.example.administrator.netcenter.R;
 import com.example.administrator.netcenter.activity.AddActivity.AccountPwd;
 import com.example.administrator.netcenter.activity.AddActivity.Descripiton;
@@ -50,6 +53,9 @@ public class AddDevice extends AppCompatActivity {
     TextView unit_tv;
     @ViewById
     TextView type_tv;
+
+    @ViewById
+    ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,6 +85,7 @@ public class AddDevice extends AppCompatActivity {
                 if (isNotEmpty)
                 {
                     Log.e("foo","bar");
+                    progressBar.setVisibility(View.VISIBLE);
                     AVObject serObj = new AVObject("Server");
                     serObj.put("typedetail",typedetail);
                     serObj.put("type",type);
@@ -89,7 +96,18 @@ public class AddDevice extends AppCompatActivity {
                     serObj.put("position",position);
                     serObj.put("ip",ip);
                     serObj.put("os",os);
-                    serObj.saveInBackground();
+                    serObj.saveInBackground(new SaveCallback() {
+                        public void done(AVException e) {
+
+                            progressBar.setVisibility(View.GONE);
+                            if (e == null) {
+                                // 保存成功
+                            } else {
+                                // 保存失败，输出错误信息
+
+                            }
+                        }
+                    });
 
 
                 }

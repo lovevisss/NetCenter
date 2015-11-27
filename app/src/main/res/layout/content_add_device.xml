@@ -9,7 +9,12 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_add_server"
     tools:context="com.example.administrator.netcenter.activity.AddDevice">
-
+    <ProgressBar
+        android:id="@+id/progress"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"/>
     <LinearLayout
         android:id="@+id/Ltype"
         android:layout_width="match_parent"

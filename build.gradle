@@ -7,6 +7,10 @@ buildscript {
         maven{
             url "http://mvn.leancloud.cn/nexus/content/repositories/releases"
         }
+        maven {
+            name 'jboss'
+            url 'http://repository.jboss.org/nexus/content/groups'
+        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:1.3.0'
